@@ -15,7 +15,7 @@ public class Graph : MonoBehaviour
 
     void Awake()
     {
-        points = new Transform[resolution];
+        points = new Transform[resolution * resolution];
         float step = 2f / resolution;
         Vector3 position = Vector3.zero;
         var scale = Vector3.one * step;
@@ -37,7 +37,7 @@ public class Graph : MonoBehaviour
         {
             Transform point = points[i];
             Vector3 position = point.localPosition;
-            position.y = f(position.x, time);
+            position.y = f(position.x, position.z, time);
             point.localPosition = position;
         }
     }
